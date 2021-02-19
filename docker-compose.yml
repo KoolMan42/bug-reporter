@@ -1,0 +1,24 @@
+services:
+  bug-API:
+    container_name: bug-reporter
+    build:
+      context: .
+      dockerfile: dockerfile
+    depends_on:
+      - postgres
+
+  postgres:
+    container_name: postgres
+    image: postgres
+
+    volumes:
+      - ./postgresdata:/var/lib/postgresql/data
+      - ./src/migrations/dbinit.sql:/docker-entrypoint-initdb.d/dbinit.sql
+    restart: always
+    environment:
+     
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
