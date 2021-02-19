@@ -4,7 +4,7 @@ enum priority{
     HIGH
 }
 
-interface bug{
+interface bug  {
     id:number,
     nameOfBug:string,
     isFixed: boolean,

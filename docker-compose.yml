@@ -1,5 +1,6 @@
+version: '3.3'
 services:
-  bug-API:
+  bug-api:
     container_name: bug-reporter
     build:
       context: .
@@ -15,7 +16,7 @@ services:
       - ./postgresdata:/var/lib/postgresql/data
       - ./src/migrations/dbinit.sql:/docker-entrypoint-initdb.d/dbinit.sql
     restart: always
-    environment:
+    env_file: database.env
      
   adminer:
     image: adminer
